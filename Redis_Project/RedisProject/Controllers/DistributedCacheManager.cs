@@ -67,5 +67,18 @@ namespace RedisProject.Controllers
             string value = Encoding.UTF8.GetString(dateByte);
         }
 
+        public void CacheFile()
+        {
+            //resim dosyasının cachelendiği örnek kod bloğu
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/resim.jpg");
+            byte[] fileByte = System.IO.File.ReadAllBytes(path);
+            _distributedCache.Set("file", fileByte);
+        }
+
+        public void CacheFileRead()
+        {
+            byte[] fileByte = _distributedCache.Get("file");
+            File(fileByte, "image/jpg");
+        }
     }
 }
