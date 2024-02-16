@@ -41,6 +41,23 @@ namespace RedisProject.Controllers
             _distributedCache.Remove("date");
         }
 
+        public void CacheSet()
+        {
+            //Cache’de binary olarak data tutmamızı sağlayan fonksiyondur.
+            byte[] dateByte = Encoding.UTF8.GetBytes(DateTime.Now.ToString());
+            _distributedCache.Set("date", dateByte);
+        }
+
+        public void CacheSet2()
+        {
+            byte[] dateByte = Encoding.UTF8.GetBytes(DateTime.Now.ToString());
+            _distributedCache.Set("date", dateByte, new DistributedCacheEntryOptions
+            {
+                AbsoluteExpiration = DateTime.Now.AddSeconds(1200),
+                SlidingExpiration = TimeSpan.FromSeconds(60)
+            });
+        }
+
 
     }
 }
