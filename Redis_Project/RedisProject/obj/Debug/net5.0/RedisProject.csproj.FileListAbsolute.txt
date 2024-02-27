@@ -1,0 +1,8 @@
+C:\Users\SORS19\Desktop\projects\Redis_Project\Redis_Project\RedisProject\obj\Debug\net5.0\RedisProject.csproj.AssemblyReference.cache
+C:\Users\SORS19\Desktop\projects\Redis_Project\Redis_Project\RedisProject\obj\Debug\net5.0\RedisProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SORS19\Desktop\projects\Redis_Project\Redis_Project\RedisProject\obj\Debug\net5.0\RedisProject.AssemblyInfoInputs.cache
+C:\Users\SORS19\Desktop\projects\Redis_Project\Redis_Project\RedisProject\obj\Debug\net5.0\RedisProject.AssemblyInfo.cs
+C:\Users\SORS19\Desktop\projects\Redis_Project\Redis_Project\RedisProject\obj\Debug\net5.0\RedisProject.csproj.CoreCompileInputs.cache
+C:\Users\SORS19\Desktop\projects\Redis_Project\Redis_Project\RedisProject\obj\Debug\net5.0\RedisProject.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\SORS19\Desktop\projects\Redis_Project\Redis_Project\RedisProject\obj\Debug\net5.0\RedisProject.RazorAssemblyInfo.cache
+C:\Users\SORS19\Desktop\projects\Redis_Project\Redis_Project\RedisProject\obj\Debug\net5.0\RedisProject.RazorAssemblyInfo.cs

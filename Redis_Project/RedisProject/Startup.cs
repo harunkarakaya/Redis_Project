@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RedisProject.RedisService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RedisProject;
 
 namespace RedisProject
 {
@@ -27,11 +29,15 @@ namespace RedisProject
 
             //redis-cache
             services.AddStackExchangeRedisCache(options => options.Configuration = "localhost:6379");
+            
+            services.AddSingleton<RedisService.RedisService, RedisService.RedisService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,RedisService.RedisService redisService)
         {
+            redisService.Connect();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
