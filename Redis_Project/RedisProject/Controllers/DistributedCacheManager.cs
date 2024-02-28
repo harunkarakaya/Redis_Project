@@ -78,7 +78,7 @@ namespace RedisProject.Controllers
         public void CacheFileRead()
         {
             byte[] fileByte = _distributedCache.Get("file");
-            File(fileByte, "image/jpg");
+            //File(fileByte, "image/jpg");
         }
     }
 }
