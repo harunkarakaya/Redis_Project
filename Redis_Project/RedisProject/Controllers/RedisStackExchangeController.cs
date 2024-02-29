@@ -101,5 +101,25 @@ namespace RedisProject.Controllers
             database.SortedSetRemove("esya", "kalem");
             values = database.SortedSetRangeByRank("esya", 0, -1);
         }
+
+        public void RedisHash()
+        {
+            IDatabase database = _redisService.GetDb(1);
+
+            //HM SET
+            database.HashSet("sozluk", "pen", "kalem");
+            database.HashSet("sozluk", "mouse", "fare");
+            database.HashSet("sozluk", "dog", "köpek");
+            database.HashSet("sozluk", "cat", "kedi");
+
+            //HM GET
+            string value_cat = database.HashGet("sozluk", "cat");
+
+            //H DEL
+            database.HashDelete("sozluk", "mouse");
+
+            //HGET ALL
+            HashEntry[] values = database.HashGetAll("sozluk");
+        }
     }
 }
