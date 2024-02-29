@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RedisProject.RedisService;
 using StackExchange.Redis;
+using System.Linq;
+using System.Web;
 
 namespace RedisProject.Controllers
 {
@@ -34,6 +36,35 @@ namespace RedisProject.Controllers
 
             //GETRANGE
             string value_getrange = database.StringGetRange("name", 2, 4);
+
+        }
+
+        public void RedisList()
+        {
+            IDatabase database = _redisService.GetDb(1);
+
+            //LPUSH - ön taraftan ekleme
+            database.ListLeftPush("ogrenciler", "furkan");
+            database.ListLeftPush("ogrenciler", "hakan");
+            database.ListLeftPush("ogrenciler", "aleyna");
+
+            //RPUSH - arka taraftan ekleme
+            database.ListRightPush("ogrenciler", "emine");
+            database.ListRightPush("ogrenciler", "kevser");
+            database.ListRightPush("ogrenciler", "murat");
+
+            //LRANGE
+            RedisValue[] values = database.ListRange("ogrenciler", 0, -1);
+            int count = 1;
+
+            //LPOP - baştan ilk öğrenci
+            string left_pop = database.ListLeftPop("ogrenciler");
+
+            //RPOP - sondan ilk öğrenci
+            string right_pop = database.ListRightPop("ogrenciler");
+
+            //LINDEX - sondan getiriyor
+            string index_value = database.ListGetByIndex("ogrenciler", 2);
         }
     }
 }
