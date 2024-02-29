@@ -83,5 +83,23 @@ namespace RedisProject.Controllers
             database.SetRemove("color", "white");
             values = database.SetMembers("color");
         }
+
+        public void RedisSortedSet()
+        {
+            IDatabase database = _redisService.GetDb(1);
+
+            //Z ADD
+            database.SortedSetAdd("esya", "kalem", 5);
+            database.SortedSetAdd("esya", "silgi", 10);
+            database.SortedSetAdd("esya", "defter", 15);
+            database.SortedSetAdd("esya", "kağıt", 2);
+
+            //ZRANGE
+            RedisValue[] values = database.SortedSetRangeByRank("esya", 0, -1);
+
+            //ZREM
+            database.SortedSetRemove("esya", "kalem");
+            values = database.SortedSetRangeByRank("esya", 0, -1);
+        }
     }
 }
