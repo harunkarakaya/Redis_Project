@@ -66,5 +66,22 @@ namespace RedisProject.Controllers
             //LINDEX - sondan getiriyor
             string index_value = database.ListGetByIndex("ogrenciler", 2);
         }
+
+        public void RedisSet()
+        {
+            IDatabase database = _redisService.GetDb(1);
+            //Set add
+            database.SetAdd("color", "blue");
+            database.SetAdd("color", "red");
+            database.SetAdd("color", "white");
+            database.SetAdd("color", "black");
+
+            //Set Members
+            RedisValue[] values = database.SetMembers("color");
+
+            //Set Remove
+            database.SetRemove("color", "white");
+            values = database.SetMembers("color");
+        }
     }
 }
